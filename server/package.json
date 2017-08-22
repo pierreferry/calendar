@@ -1,0 +1,22 @@
+{
+  "name": "calendar_station_f",
+  "version": "1.0.0",
+  "description": "A Node.js project",
+  "author": "pferry <pferry@student.42.fr>",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "dev": "echo 'run dev' & npm start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "./node_modules/nodemon/bin/nodemon.js -e js --config ./nodemon.config.json --exec npm run dev "
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "express": "^4.13.3",
+    "jsonfile": "^2.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}

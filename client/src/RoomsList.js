@@ -219,7 +219,7 @@ class RoomsList extends Component {
 				<div className="rooms-list">
 					<label>
 						Filtrer
-						<input type="text" placeholder="Filter" onChange={this.filterList.bind(this)}/>
+						<input type="text" placeholder="Nom, Equipement" onChange={this.filterList.bind(this)}/>
 					</label>
 					{this.state.rooms.length > 0 ? table : notable }
 				</div>

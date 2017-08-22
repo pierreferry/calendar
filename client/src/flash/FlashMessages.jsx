@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactCSSTransitionGroup from '../node_modules/react-addons-css-transition-group';
+import ReactCSSTransitionGroup from '../../node_modules/react-addons-css-transition-group';
 import Alert from "./Alert"
 import './FlashMessages.css'
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import RoomsList from './RoomsList';
+import Logo from './logo.svg';
+import ReservationsPage from './ReservationsPage.jsx';
 import './App.css';
 
 class App extends Component {
@@ -8,10 +8,10 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <Logo className="App-logo" alt="logo" />
           <h2>Welcome to my great room reservation service.</h2>
         </div>
-				<RoomsList />
+				<ReservationsPage />
       </div>
     );
   }

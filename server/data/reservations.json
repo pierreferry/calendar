@@ -47,6 +47,30 @@
         {
             "datetime": "2017-08-21T14:51",
             "duration": 60
+        },
+        {
+            "datetime": "2017-08-24T09:48",
+            "duration": 60
+        },
+        {
+            "datetime": "2017-08-24T10:53",
+            "duration": 60
+        },
+        {
+            "datetime": "2017-08-24T15:50",
+            "duration": 60
+        },
+        {
+            "datetime": "2017-08-24T19:48",
+            "duration": "30"
+        },
+        {
+            "datetime": "2017-08-24T16:59",
+            "duration": 60
+        },
+        {
+            "datetime": "2017-08-10T17:18",
+            "duration": 60
         }
     ],
     "Salle #2": [
@@ -85,6 +109,22 @@
         {
             "datetime": "2017-08-21T15:10",
             "duration": 60
+        },
+        {
+            "datetime": "2017-08-24T09:48",
+            "duration": 60
+        },
+        {
+            "datetime": "2017-08-24T10:54",
+            "duration": 60
+        },
+        {
+            "datetime": "2017-08-24T17:00",
+            "duration": 60
+        },
+        {
+            "datetime": "2017-08-10T17:18",
+            "duration": 60
         }
     ],
     "Salle de ouf": [
@@ -107,6 +147,18 @@
         {
             "datetime": "2017-08-21T15:10",
             "duration": 60
+        },
+        {
+            "datetime": "2017-08-24T11:00",
+            "duration": 60
+        },
+        {
+            "datetime": "2017-08-24T17:17",
+            "duration": 60
+        },
+        {
+            "datetime": "2017-08-10T17:18",
+            "duration": 60
         }
     ],
     "Salle nulle": [
@@ -124,6 +176,18 @@
         },
         {
             "datetime": "2017-08-21T15:10",
+            "duration": 60
+        },
+        {
+            "datetime": "2017-08-24T11:03",
+            "duration": 60
+        },
+        {
+            "datetime": "2017-08-24T17:17",
+            "duration": 60
+        },
+        {
+            "datetime": "2017-08-10T17:18",
             "duration": 60
         }
     ],
@@ -154,6 +218,26 @@
         },
         {
             "datetime": "2017-08-21T15:10",
+            "duration": 60
+        },
+        {
+            "datetime": "2017-08-24T09:51",
+            "duration": 60
+        },
+        {
+            "datetime": "2017-08-24T10:55",
+            "duration": 60
+        },
+        {
+            "datetime": "2017-08-15T11:06",
+            "duration": 60
+        },
+        {
+            "datetime": "2017-08-24T17:17",
+            "duration": 60
+        },
+        {
+            "datetime": "2017-08-10T17:18",
             "duration": 60
         }
     ]

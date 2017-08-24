@@ -1,17 +1,14 @@
-var express = require('express');
-var jsonfile = require('jsonfile');
+const express = require('express');
+const validator = require('validator');
+const jsonfile = require('jsonfile');
 jsonfile.spaces = 4;
-var cors = require('cors');
-var bodyParser = require('body-parser');
-var app = express();
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const router = new express.Router();
 
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+const rooms = jsonfile.readFileSync('./server/data/rooms.json');
 
-var rooms = jsonfile.readFileSync('./data/rooms.json');
-
-app.get('/rooms', function(req, res) {
+router.get('/rooms', function(req, res) {
 	if (rooms) {
 		return res.status(200).send(rooms);
 	}
@@ -20,8 +17,8 @@ app.get('/rooms', function(req, res) {
 	}
 });
 
-app.get('/reservations', function(req, res) {
-	var reservations = jsonfile.readFileSync('./data/reservations.json');
+router.get('/reservations', function(req, res) {
+	var reservations = jsonfile.readFileSync('./server/data/reservations.json');
 
 	if (reservations) {
 		return res.status(200).send(reservations);
@@ -30,7 +27,7 @@ app.get('/reservations', function(req, res) {
 		return res.status(404).send();
 	}
 });
-app.post('/reservations', function(req, res) {
+router.post('/reservations', function(req, res) {
 	function checkRoomDisponibily(reservations, data) {
 		function isBetween(target, min, max) {
 			return (target >= min && target <= max);
@@ -50,7 +47,7 @@ app.post('/reservations', function(req, res) {
 		return true;
 	};
 
-	var file = './data/reservations.json';
+	var file = './server/data/reservations.json';
 	var room = req.body.room;
 	var data = {
 		datetime: req.body.datetime,
@@ -72,8 +69,8 @@ app.post('/reservations', function(req, res) {
 	jsonfile.writeFileSync(file, reservations);
 	res.status(200).send({reservations});
 });
-app.get('/reservation/:room', function(req, res) {
-	var reservations = jsonfile.readFileSync('./data/reservations.json');
+router.get('/reservation/:room', function(req, res) {
+	var reservations = jsonfile.readFileSync('./server/data/reservations.json');
 
 	if (reservations[req.params.room]) {
 		return res.status(200).send(reservations[req.params.room]);
@@ -82,4 +79,6 @@ app.get('/reservation/:room', function(req, res) {
 		return res.status(404).send();
 	}
 });
-app.listen(3001);
+
+
+module.exports = router;

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import FlashMessages from "./flash/FlashMessages"
+import FlashMessages from "./flash/FlashMessages.jsx";
+import SearchForm from "./components/SearchForm.jsx";
+import RoomsTable from "./components/RoomsTable.jsx";
+const servAdress = "http://localhost:3000";
 
-class RoomsList extends Component {
+class ReservationsPage extends Component {
 	constructor() {
 		super();
 		var date = new Date().toISOString().slice(0, 16);
@@ -16,11 +19,12 @@ class RoomsList extends Component {
 		};
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+		this.handleReservation = this.handleReservation.bind(this);
 		this.removeMessage = this.removeMessage.bind(this);
 	}
 
 	componentDidMount() {
-		fetch('http://localhost:3001/rooms')
+		fetch(servAdress + '/rooms')
 		.then(function(response) {
 			return response.json();
 		})
@@ -31,7 +35,7 @@ class RoomsList extends Component {
 		.catch(function(ex) {
 			console.log('parsing failed', ex);
 		});
-		fetch('http://localhost:3001/reservations')
+		fetch(servAdress + '/reservations')
 		.then(function(res) {
 			return res.json();
 		})
@@ -39,14 +43,6 @@ class RoomsList extends Component {
 			this.setState({reservations})
 			this.handleSearchSubmit();
 		});
-	}
-
-	printEquipement(equipements) {
-		var tab = [];
-		equipements.forEach(function(equipement) {
-			tab.push( equipement.name );
-		});
-		return tab.join(', ');
 	}
 
 	roomToString(room) {
@@ -82,7 +78,7 @@ class RoomsList extends Component {
 			body: JSON.stringify(data)
 		};
 
-		fetch('http://localhost:3001/reservations', options)
+		fetch(servAdress + '/reservations', options)
 		.then(function(response) {
 			return response.json();
 		})
@@ -162,69 +158,32 @@ class RoomsList extends Component {
 	}
 
 	render() {
-		const table =
-			<table className="table table-striped">
-				<thead>
-					<tr>
-						<th></th>
-						<th>Nom</th>
-						<th>Description</th>
-						<th>Capacité</th>
-						<th>Equipements</th>
-					</tr>
-				</thead>
-				<tbody>
-					{
-						this.state.rooms.map(room => {
-							return (
-									<tr key={ room.name }>
-										<td> <button onClick={() => {this.handleReservation(room)}}>Réserver</button> </td>
-										<td> { room.name } </td>
-										<td> { room.description } </td>
-										<td> { room.capacity } </td>
-										<td> { this.printEquipement(room.equipements) } </td>
-									</tr>
-							)
-						})
-					}
-				</tbody>
-			</table>;
-		const notable =
-			<p>
-				Pas de réservation disponible pour le { this.state.datetime.toString() }.
-			</p>
 		return (
 			<div className="container">
 				<div className="flash-message">
 					<FlashMessages removeMessage={this.removeMessage} messages={this.state.messages}/>
 				</div>
 				<div className="datetime form">
-					<form onSubmit={this.handleSearchSubmit} className="form-inline">
-						<div className="form-group">
-							<label>
-								Jour et heure de la reservation
-								<input className="form-control" ref="datetime" name="datetime" id="datetime" value={this.state.datetime} onChange={this.handleInputChange} type="datetime-local"/>
-							</label>
-						</div>
-						<div className="form-group">
-							<label>
-								Durée :
-								<input className="form-control" ref="duration" name="duration" value={this.state.duration} onChange={this.handleInputChange} type="number" />
-								min
-							</label>
-						</div>
-						<input className="btn btn-primary" type="submit" value="Rechercher"/>
-					</form>
+					<SearchForm
+						handleSearchSubmit={this.handleSearchSubmit}
+						handleInputChange={this.handleInputChange}
+						datetime={this.state.datetime}
+						duration={this.state.duration}
+					/>
 				</div>
 				<div className="rooms-list">
 					<label>
 						Filtrer
 						<input type="text" placeholder="Filter" onChange={this.filterList.bind(this)}/>
 					</label>
-					{this.state.rooms.length > 0 ? table : notable }
+					<RoomsTable
+						rooms={this.state.rooms}
+						handleReservation={this.handleReservation}
+						datetime={this.state.datetime}
+					/>
 				</div>
 			</div>
 		)
 	}
 }
-export default RoomsList;
+export default ReservationsPage;

@@ -174,7 +174,7 @@ class ReservationsPage extends Component {
 				<div className="rooms-list">
 					<label>
 						Filtrer
-						<input type="text" placeholder="Filter" onChange={this.filterList.bind(this)}/>
+						<input type="text" placeholder="Nom, Equipement" onChange={this.filterList.bind(this)}/>
 					</label>
 					<RoomsTable
 						rooms={this.state.rooms}

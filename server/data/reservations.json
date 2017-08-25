@@ -1,2 +1,32 @@
 {
+    "Salle #1": [
+        {
+            "datetime": "2017-08-25T13:00",
+            "duration": 60
+        }
+    ],
+    "Salle #2": [
+        {
+            "datetime": "2017-08-25T13:00",
+            "duration": 60
+        }
+    ],
+    "Salle Okjsdkso": [
+        {
+            "datetime": "2017-08-25T13:02",
+            "duration": 60
+        }
+    ],
+    "Salle nulle": [
+        {
+            "datetime": "2017-08-25T13:16",
+            "duration": 60
+        }
+    ],
+    "Salle de ouf": [
+        {
+            "datetime": "2017-08-25T13:18",
+            "duration": 60
+        }
+    ]
 }

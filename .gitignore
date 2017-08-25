@@ -5,6 +5,9 @@
 /server/node_modules
 /node_modules
 
+# datas
+/server/data/reservations.json
+
 # testing
 /coverage
 
